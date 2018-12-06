@@ -40,3 +40,4 @@ luac.out
 *.hex
 
 .coding-ide
+neko.code-workspace
