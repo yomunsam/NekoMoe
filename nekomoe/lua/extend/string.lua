@@ -19,3 +19,12 @@ function string.trim(s)
     if s == nil then return "" end
     return (string.gsub(s, "^%s*(.-)%s*$", "%1")) 
 end
+
+function string.startWith(str,substr)
+    if str == nil or substr == nil then return false end
+    if string.find(str,substr) ~= 1 then 
+        return false
+    else
+        return true
+    end
+end
