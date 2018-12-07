@@ -9,8 +9,14 @@ route:add("/", function()
     NekoMoe.Page.ShowPage("/app/view/index.html",{enable=true},{title="Hello,NekoMoe"})
 end)
 
-NekoMoe.Route.Use("/",route)
+local route2 = NekoMoe.Route.GetRouteEntity()
 
+route2:add("/", function()
+    NekoMoe.Page.ChangeTo("命中了第二个路由组","body",{enable=true})
+end)
+
+NekoMoe.Route.Use("/",route)
+NekoMoe.Route.Use("/b",route2)
 
 --- 应该在完成所有操作之后调用Init
 NekoMoe.Init(config)

@@ -79,7 +79,7 @@ function NekoMoe.Page.LoadTo(path,tag,tpl_render,index)  --目标路径，元素
 end
 
 ---将指定元素中的某个内容切换到
-function NekoMoe.Page.ChangeTo(content,tag,tpl_render)  --目标路径，元素tag,模板引擎渲染设置table{enable=bool,是否渲染 ； data = table， 传入数据, 元素tag序列 默认为0}
+function NekoMoe.Page.ChangeTo(content,tag,tpl_render,index)  --目标路径，元素tag,模板引擎渲染设置table{enable=bool,是否渲染 ； data = table， 传入数据, 元素tag序列 默认为0}
     if index == nil then index = 0 end
     
     local final_content = content
@@ -90,4 +90,10 @@ function NekoMoe.Page.ChangeTo(content,tag,tpl_render)  --目标路径，元素t
     end
     js.global.document:getElementsByTagName(tag)[index].innerHTML = final_content
     
+end
+
+
+
+function NekoMoe.Page.Jump404()
+    NekoMoe.Page.ChangeTo("404:访问的页面不存在","body",{enable=true})
 end
