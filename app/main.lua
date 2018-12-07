@@ -6,9 +6,7 @@ local config = require("app.config.startup") or {}
 local route = NekoMoe.Route.GetRouteEntity()
 
 route:add("/", function()
-    print("触发了路由：/")
-    Utils.Dom.SetTitle("喵喵喵")
-    NekoMoe.Page.LoadTo("/app/view/index.html","body",{enable = true})
+    NekoMoe.Page.ShowPage("/app/view/index.html",{enable=true},{title="Hello,NekoMoe"})
 end)
 
 NekoMoe.Route.Use("/",route)

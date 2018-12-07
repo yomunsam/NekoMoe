@@ -1,0 +1,16 @@
+body{
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    font-weight: lighter;
+    background-color: #f7fbfc
+}
+
+/* 配色 */
+
+.bg-color-main{
+    background-color: #f7fbfc
+}
+
+
+.text-color-title{
+    color: #769fcd
+}

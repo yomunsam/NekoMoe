@@ -1,11 +1,48 @@
-<h1>这里是首页</h1>
+<div class="title-g">
+    <div class="title-text text-color-title">Hello, NekoMoe</div>
+    <div class="title-sub-text">Lua语言WEB单页应用开发框架</div>
+    <a class="button title-btn" href="">快速开始</a>
+    <a class="button title-btn" href="https://github.com/yomunsam/NekoMoe">Github</a>
+</div>
 
-<br>
-下面用前端的模板引擎刷出来的一堆玩意
-<br>
-<ul>
-{% for i = 1, 15 , 1 do %}
-    <li>{{ i }} </li>
-{% end %}
+<div class="foot-info">
+    <p class="text-color-title">NekoNya Studio</p>  
+</div>
 
-</ul>
+<style>
+
+.title-g{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%,-50%);
+}
+
+.title-text{
+    text-align: center;
+    font-size:3em;
+}
+
+.title-sub-text{
+    font-size: 1.5em;
+    color: #696969
+}
+
+.title-btn{
+    padding-left: 8px;
+    padding-right: 8px;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    background-color:#30A9DE;
+    font-weight: lighter;
+    font-size: 0.9em;
+}
+
+.foot-info{
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%,-50%);
+}
+
+</style>
+<link rel="stylesheet" href="app/css/main.css"></link>
