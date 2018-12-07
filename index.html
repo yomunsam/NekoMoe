@@ -11,18 +11,26 @@
 
     <app>
         <div class = "load-tip">Hello , NekoMoe</div>
+        <div class = "load-sub">稍候 加载中</div>
         <style>
             .load-tip {
                 margin: 100px auto;
                 display: block;
-                font: 100 4.5em "Helvetica Neue","Open Sans",sans-serif;
+                font: 100 3em "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
                 margin-bottom: 0.25em;
-                color: #259DFF;
+                color: #7CC0EF;
+                font-weight: lighter;
+                margin-left: 1%;
+            }
+
+            .load-sub{
+                color: #696969;
+                margin-left: 1%;
             }
         </style>
     </app>
     <!-- 初始化NekoMoe -->
-    <script src="nekomoe/lua/init.lua" type="application/lua" ></script>
+    <script src="nekomoe/lua/init.lua" type="application/lua" async></script>
     <!-- 初始化工程 -->
     <script src="app/main.lua" type="application/lua" async></script>
 </body>
