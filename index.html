@@ -30,8 +30,9 @@
         </style>
     </app>
     <!-- 初始化NekoMoe -->
-    <script src="nekomoe/lua/init.lua" type="application/lua"></script>
+    <script src="nekomoe/lua/init.lua" type="application/lua" async></script>
     <!-- 初始化工程 -->
-    <script src="app/main.lua" type="application/lua" async></script>
+    <!-- 约定大于配置，尝试不手动启动app，改在框架初始化结束之后自动启动 -->
+    <!-- <script src="app/main.lua" type="application/lua" async></script> -->
 </body>
 </html>
