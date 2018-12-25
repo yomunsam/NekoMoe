@@ -41,7 +41,11 @@ function NekoMoe.Page.ShowPage(path,tpl_render,page_data)
                 final_content = NekoMoe.Tpl.render_str(final_content,tpl_render.data)
             end
         end
+        
         js.global.document:getElementsByTagName("body")[0].innerHTML = final_content
+        --处理页面中的JS
+        Utils.Dom.HandleJavaScripts()
+        
         handled = true
     end
 
@@ -71,6 +75,8 @@ function NekoMoe.Page.LoadTo(path,tag,tpl_render,index)  --目标路径，元素
             end
         end
         js.global.document:getElementsByTagName(tag)[index].innerHTML = final_content
+        --处理页面中的JS
+        Utils.Dom.HandleJavaScripts()
         handled = true
     end
 
@@ -89,7 +95,8 @@ function NekoMoe.Page.ChangeTo(content,tag,tpl_render,index)  --目标路径，�
         end
     end
     js.global.document:getElementsByTagName(tag)[index].innerHTML = final_content
-    
+    --处理页面中的JS
+    Utils.Dom.HandleJavaScripts()
 end
 
 
@@ -97,3 +104,6 @@ end
 function NekoMoe.Page.Jump404()
     NekoMoe.Page.ChangeTo("404:访问的页面不存在","body",{enable=true})
 end
+
+
+-- 
