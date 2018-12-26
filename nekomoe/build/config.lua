@@ -1,12 +1,9 @@
 --- nekomoe 猫萌前端框架 打包配置
 
-NekoMoe = NekoMoe or {}
-NekoMoe.Build = NekoMoe.Build or {}
-
-NekoMoe.Build.Framework = {}
+local Build = {}
 
 ---框架内lua文件打包配置
-NekoMoe.Build.Framework.LuaPack = {
+Build.LuaPack = {
 
     -- 框架：lua方法扩展
     "nekomoe.lua.extend.string",
@@ -31,8 +28,15 @@ NekoMoe.Build.Framework.LuaPack = {
 
     --other
     "nekomoe.lua.core.template.template",
-    "nekomoe.lua.core.route.entity"
+    "nekomoe.lua.core.route.entity",
+
+    --utils
+    "nekomoe.vendor.markdown"
 }
 
 ---输出位置
-NekoMoe.Build.Framework.LuaOutput = "nekomoe.min.lua"
+Build.LuaOutput = "nekomoe.min.lua"
+
+
+
+return Build
