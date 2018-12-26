@@ -36,23 +36,46 @@ end
 ---在切换页面DOM内容后重新运行JS
 function Utils.Dom.HandleJavaScripts()
     --处理页面中的JS
-    local scripts = document:getElementsByTagName("body")[0]:getElementsByTagName('script')
-    for i = 0 , scripts.length -1, 1 do
-        if scripts[i].type == "" or string.lower(scripts[i].type) == "text/javascript" or string.lower(scripts[i].type) == "application/javascript" then
-            if scripts[i].innerHTML ~= nil then
-                local jsObj = document:createElement("script");
-                jsObj.innerHTML = scripts[i].innerHTML
-                document.body:appendChild(jsObj)
-            end
+    local scripts = document.body:querySelectorAll('script');
+    local loaded_num = -1
 
-            if scripts[i].src ~= nil and scripts[i].src ~= "" then
-                local jsObj = document:createElement("script");
-                jsObj.src = scripts[i].src
-                jsObj.innerHTML = scripts[i].innerHTML
-                -- print(jsObj.innerHTML)
-                document.body:appendChild(jsObj)
+    local function RunJavaScript(script,onload,onerror)
+        if script.type == "" or string.lower(script.type) == "text/javascript" or string.lower(script.type) == "application/javascript" then
+            local jsObj = document:createElement("script");
+            if script.innerHTML ~= nil then              
+                jsObj.innerHTML = script.innerHTML
             end
+            if script.src ~= nil and script.src ~= "" then
+                jsObj:setAttribute('src',script.src)
+                -- print("src:" .. jsObj.src)
+            end
+            jsObj.onload = function() 
+                if onload ~= nil then
+                    onload()
+                end
+            end
+            jsObj.onerror = function(err)
+                if onerror ~= nil then
+                    onerror()
+                end
+            end
+            document.body:appendChild(jsObj)
+            document.body:removeChild(jsObj);
         end
-        
     end
+
+    local function RunList()
+        --获取下一个要执行的内容
+        local run_index = loaded_num + 1
+        if scripts.length >= run_index + 1 then
+            RunJavaScript(scripts[run_index],function()
+                --加载成功
+                loaded_num = loaded_num + 1
+                RunList()
+            end,function()
+                print("加载出错：" .. run_index)
+            end)
+        end
+    end
+    RunList()
 end
