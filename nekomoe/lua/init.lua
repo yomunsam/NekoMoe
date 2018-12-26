@@ -18,6 +18,8 @@ require("nekomoe.lua.const.nekoconst")
 
 --工具程序集
 require("nekomoe.lua.utils.dom")
+require("nekomoe.lua.utils.storage")
+require("nekomoe.lua.utils.cookie")
 
 --核心程序集
 require("nekomoe.lua.core.pagemgr.pagemgr")
